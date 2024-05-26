@@ -1,0 +1,70 @@
+@import '../../../variables';
+@import '../../../mixins';
+
+.page-model {
+    background: url("/assets/sandy.png");
+    background-size: cover;
+    padding: 0px;
+    overflow: hidden;
+    .profile {
+        padding: 10px;
+        color: white;
+        display: flex;
+        height: 150px;
+        background: url("/assets/sea.jpg");
+        background-position-y: center;
+        background-size: cover;
+        align-items: center;
+        img{
+            max-width: 150px;
+            margin-left: 40px;
+        }
+        .info-acc {
+            h1 {
+                font-size: 26px;
+            }
+            margin-left: 40px;
+            .info-posts {
+                display: flex;
+                max-width: 400px;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                p {
+                    margin: 4px;
+                    font-size: 16px;
+                    b {
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
+    }
+    .posts{
+        overflow-y:scroll;
+        max-height: 400px;
+        margin-right: -18px;
+        .post {
+            max-width: 900px;
+            margin: 15px;
+            padding: 15px;
+            background-color: #ffffffde;
+            @include border('#426993');
+        }
+        .info-post{
+            color: $bdark;
+            display: flex;
+            h1{
+                font-size: 22px;
+            }
+            p{
+                font-size: 17px;
+                color: #828282;
+                margin-left: 14px;
+            }
+        }
+        .text-post {
+            font-family: "Inika", serif;
+            font-size: 16px;
+        }
+    }
+}

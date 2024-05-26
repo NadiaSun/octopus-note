@@ -1,0 +1,89 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'variables';
+@import 'mixins';
+
+.main {
+    background-image: url('/assets/background.jpg');
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    position: absolute;
+    font-family: "Irish Grover", system-ui; 
+}
+
+.model {
+    @include border();
+    background-color: #00162ed2;
+    width: 540px;
+    padding: 15px;
+    height: 320px;
+    .octopus{
+        max-width: 280px; 
+        margin: 10px;
+    }
+    .field {
+        hr {
+            border: 1px solid $pink;
+        }
+        margin: 20px;
+        input {
+            background: none;
+            outline: none;
+            border: none;
+            width: 100%;
+            padding-left: 15px;
+            font-size: 22px;
+            color: white;
+        }
+    }
+    .field.error-f {
+        input {
+            color: #ff2828;
+        }
+        hr {
+            border: 1px solid #ff2828;
+        }
+    }
+    .warning {
+        .error-message {
+            color: #ff2828;
+            font-size: 14px;
+            font-family: 'Arial Narrow', Arial, sans-serif;
+            font-weight: normal;
+
+        }
+    }
+    
+    .close {
+        max-width: 16px;
+        margin-right: 540px;
+        cursor: pointer;
+    }
+}
+
+.page-model {
+    @include border($bdark);
+    background-color: white;
+    width: 900px;
+    padding: 15px;
+    height: 570px;
+    margin: 10px;
+}
+
+.btn {
+    width: 400px;
+    margin: 8px;
+    @include btn();
+}
+.btn:hover, .btn.active{
+    background: $blight;
+}
+.btn:active {
+    background: $blight;
+    transform: translateY(4px);
+}
+
+.delete {
+    display: none !important;
+}

@@ -1,0 +1,15 @@
+
+
+@mixin border($border: #FFA1AE) {
+    border: 3px solid $border;
+    border-radius: 25px;
+}
+
+@mixin btn($color: #00162D, $border: #FFA1AE) {
+    @include border($border);
+    padding: 10px;
+    color: #ffffff;
+    background: $color;
+    font-size: 30px;
+    font-family: "Irish Grover", system-ui;
+}

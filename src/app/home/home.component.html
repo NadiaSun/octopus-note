@@ -1,0 +1,16 @@
+<div class="main">
+    <div class="content" [routerLinkActive]="['title-none']">
+      <div class="header">
+        <h1 class="title">Welcome</h1>
+        <img src="/assets/octopus.png" class="octopus">
+      </div>
+      <div class="menu">
+        <div class="start-block" [routerLinkActive]="['delete']">
+          <button class="btn log" [routerLink]="['/', 'login']">Login</button>
+          <button class="btn reg" [routerLink]="['/', 'registration']">Register</button>
+        </div>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+    
+  </div>

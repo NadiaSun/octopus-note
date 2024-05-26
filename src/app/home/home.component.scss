@@ -1,0 +1,32 @@
+.content.title-none {
+    .header {
+        .title {
+            display: none !important;
+        }
+    }
+}
+
+.content {
+    text-align: center;
+    .header {
+        .title {
+            margin: 10px;
+            color: white;
+            font-size: 80px;
+        }
+        .octopus {
+            margin-top: 10px;
+        max-width: 280px; 
+        }
+    }
+    .menu {
+        display: grid;
+        justify-content: center;
+        bottom: 40px;
+        margin: 10px;
+        .start-block {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}
