@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,9 +8,18 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private router: Router, private activeRoute: ActivatedRoute) {
+  message: string;
+
+  constructor(private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe((params: Params) => {
+      if(params['loginAgain']) {
+        this.message = 'Authorization time has expired. Please login again'
+      } else {
+        this.message = ''
+      }
+    })
   }
 }

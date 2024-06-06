@@ -1,0 +1,30 @@
+<div class="page-model">
+    <div class="model">
+        <form [formGroup]="form" class="form-post" (ngSubmit)="submit()">
+            <div class="field">
+                <input
+                    type="text"
+                    formControlName="title"
+                    placeholder="Name post"
+                >
+                <hr>
+            </div>
+            <div class="field">
+                <input
+                    type="text"
+                    formControlName="text"
+                    placeholder="Text post"
+                >
+                <hr>
+            </div>
+            <div style="text-align: center;">
+                <button
+                    class="btn"
+                    type="submit"
+                    [disabled]="form.invalid"
+                    >Create</button>
+                <img src="assets/back.png" [routerLink]="['/admin', '/posts']" class="close">
+            </div>
+        </form>
+    </div>
+</div>
