@@ -26,7 +26,7 @@
         hr {
             border: 1px solid $pink;
         }
-        margin: 20px;
+        margin: 40px 20px 30px;
         input {
             background: none;
             outline: none;
@@ -47,11 +47,11 @@
     }
     .warning {
         .error-message {
-            color: #ff2828;
+            color: #ff526a;
             font-size: 14px;
             font-family: 'Arial Narrow', Arial, sans-serif;
             font-weight: normal;
-
+            margin: auto;
         }
     }
     
@@ -75,6 +75,13 @@
     width: 400px;
     margin: 8px;
     @include btn();
+}
+
+.btn:disabled, .btn:disabled:hover{
+    background-color: #495869;
+    color: $bdark;
+    border-color: $bdark;
+    cursor: not-allowed;
 }
 .btn:hover, .btn.active{
     background: $blight;

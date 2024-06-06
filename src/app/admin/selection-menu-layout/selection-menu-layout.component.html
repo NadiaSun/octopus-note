@@ -5,6 +5,6 @@
         <button class="btn" [routerLinkActive]="['active']" [routerLink]="['posts']">Posts</button>
         <button class="btn">Unknown</button>
         <button class="btn">Settings</button>
-        <p class="exit">logout</p>
+        <p class="exit" (click)="logout($event)">logout</p>
     </div>
 </div>

@@ -9,6 +9,9 @@
           <button class="btn log" [routerLink]="['/', 'login']">Login</button>
           <button class="btn reg" [routerLink]="['/', 'registration']">Register</button>
         </div>
+        <div class="warr" *ngIf="message">
+          <p>{{message}}</p>
+        </div>
         <router-outlet></router-outlet>
       </div>
     </div>
