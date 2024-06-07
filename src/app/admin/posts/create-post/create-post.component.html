@@ -10,12 +10,8 @@
                 <hr>
             </div>
             <div class="field">
-                <input
-                    type="text"
-                    formControlName="text"
-                    placeholder="Text post"
-                >
-                <hr>
+                <quill-editor formControlName="text" class="quill-octo">
+                </quill-editor>
             </div>
             <div style="text-align: center;">
                 <button
@@ -23,7 +19,7 @@
                     type="submit"
                     [disabled]="form.invalid"
                     >Create</button>
-                <img src="assets/back.png" [routerLink]="['/admin', '/posts']" class="close">
+                <img src="assets/back.png" [routerLink]="['', 'admin', 'posts']" class="close">
             </div>
         </form>
     </div>

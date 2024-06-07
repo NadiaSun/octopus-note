@@ -1,6 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'variables';
 @import 'mixins';
+@import '~quill/dist/quill.bubble.css';
+@import '~quill/dist/quill.core.css';
+@import '~quill/dist/quill.snow.css';
 
 .main {
     background-image: url('/assets/background.jpg');
@@ -55,13 +58,13 @@
         }
     }
     
-    .close {
-        max-width: 16px;
-        margin-right: 540px;
-        cursor: pointer;
-    }
 }
 
+.close {
+    max-width: 16px;
+    margin-right: 540px;
+    cursor: pointer;
+}
 .page-model {
     @include border($bdark);
     background-color: white;

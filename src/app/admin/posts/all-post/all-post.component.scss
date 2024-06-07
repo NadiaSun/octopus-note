@@ -1,0 +1,48 @@
+@import '../../../../variables';
+@import '../../../../mixins';
+
+.page-model {
+    background: url("/assets/sandy.png");
+    background-size: cover;
+    padding: 0px;
+    overflow: hidden;
+    overflow-y:scroll;
+    .posts{
+        .post {
+            max-width: 900px;
+            margin: 15px;
+            padding: 15px;
+            background-color: #ffffffde;
+            @include border('#426993');
+        }
+        .info-post{
+            color: $bdark;
+            display: flex;
+            justify-content: space-between;
+            h1{
+                font-size: 22px;
+            }
+            p{
+                font-size: 17px;
+                color: #828282;
+                margin-left: 14px;
+            }
+            p.delete-post {
+                color: #ff5454;
+                cursor: pointer;
+            }
+        }
+        .text-post {
+            font-family: "Inika", serif;
+            font-size: 16px;
+        }
+    }
+}
+
+.close {
+    max-width: 27px;
+    margin-right: none;
+    position: absolute;
+    bottom: 60px;
+    left: 70px;
+}

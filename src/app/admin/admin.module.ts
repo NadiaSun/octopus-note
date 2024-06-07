@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Provider } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { SelectionMenuLayoutComponent } from './selection-menu-layout/selection-menu-layout.component';
@@ -12,9 +12,7 @@ import { SharedModule } from '../shared/shared.module';
 import { AuthGuard } from './shared/auth.guard';
 import { CreatePostComponent } from './posts/create-post/create-post.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-
-
+import { AllPostComponent } from './posts/all-post/all-post.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +21,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ProfileComponent,
     SettingsComponent,
     PostMenuComponent,
-    CreatePostComponent],
+    CreatePostComponent,
+    AllPostComponent],
   imports: [
     CommonModule,
     SharedModule,
@@ -35,16 +34,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         {path: 'profile', component: ProfileComponent},
         {path: 'posts', children: [
           {path: '', component: PostMenuComponent, pathMatch: 'full'},
-          {path: 'create', component: CreatePostComponent}
+          {path: 'create', component: CreatePostComponent},
+          {path: 'all', component: AllPostComponent}
         ]}
       ]}
     ])
   ],
   exports: [
-    RouterModule
+    RouterModule,
   ],
   providers: [
-    AuthService,
+    AuthService
   ]
 })
 export class AdminModule { }
