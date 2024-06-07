@@ -4,51 +4,19 @@
         <div class="info-acc">
             <h1>Octopusic</h1>
             <div class="info-posts">
-                <p>Counter posts: <b>12</b></p>
-                <p>Date creating acc: <b>12.03.24</b></p>
-                <p>Last post: <b>12.03.24</b></p>
+                <p>Counter posts: <b>{{posts.length}}</b></p>
+                <p>Date creating acc: <b>**.**.**</b></p>
+                <p>Last post: <b>{{getLastDate() | date: 'short'}}</b></p>
             </div>
         </div>
     </div>
     <div class="posts">
-        <div class="post">
+        <div class="post" *ngFor="let post of posts">
             <div class="info-post">
-                <h1>Octopus day</h1>
-                <p>12.03.24</p>
+                <h1>{{post.title}}</h1>
+                <p>{{post.date | date: 'short'}}</p>
             </div>
-            <p class="text-post">
-                His day is very sunny and huppy. He would like to cooking a stars and sea sold.
-                But it is not good idea. He don’t can cooking. 
-            </p>
-        </div>
-        <div class="post">
-            <div class="info-post">
-                <h1>Octopus day</h1>
-                <p>12.03.24</p>
-            </div>
-            <p class="text-post">
-                His day is very sunny and huppy. He would like to cooking a stars and sea sold.
-                But it is not good idea. He don’t can cooking. 
-            </p>
-        </div>
-        <div class="post">
-            <div class="info-post">
-                <h1>Octopus day</h1>
-                <p>12.03.24</p>
-            </div>
-            <p class="text-post">
-                His day is very sunny and huppy. He would like to cooking a stars and sea sold.
-                But it is not good idea. He don’t can cooking. 
-            </p>
-        </div>
-        <div class="post">
-            <div class="info-post">
-                <h1>Octopus day</h1>
-                <p>12.03.24</p>
-            </div>
-            <p class="text-post">
-                His day is very sunny and huppy. He would like to cooking a stars and sea sold.
-                But it is not good idea. He don’t can cooking. 
+            <p class="text-post" [innerHTML]="post.text">
             </p>
         </div>
     </div>

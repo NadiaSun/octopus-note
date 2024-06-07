@@ -1,4 +1,5 @@
 export interface Envirenment {
     apiKey: string,
-    production: boolean
+    production: boolean,
+    dataBaseUrl: string,
 }

@@ -16,8 +16,10 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe((params: Params) => {
       if(params['loginAgain']) {
+        this.message = 'Please login again'
+      } else if(params['loginFailed']) {
         this.message = 'Authorization time has expired. Please login again'
-      } else {
+      }else {
         this.message = ''
       }
     })

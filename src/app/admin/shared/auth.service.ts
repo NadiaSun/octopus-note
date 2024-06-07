@@ -4,20 +4,20 @@ import { FbAuthResponse, User } from './interfaces';
 import { Observable, Subject, catchError, tap, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class AuthService {
   public error$: Subject<string> = new Subject<string>()
 
   constructor(private http: HttpClient) {}
 
-  get status(): string | null {
+  get status(): string {
     const expDate: Date = new Date(<string>localStorage.getItem('fb-auth-exp'))
     if (new Date > expDate) {
       this.logout();
-      return null
+      return ''
     }
     
-    return localStorage.getItem('fb-auth-token')
+    return localStorage.getItem('fb-auth-token') as string
   }
   
   login(user: User): Observable<any> {

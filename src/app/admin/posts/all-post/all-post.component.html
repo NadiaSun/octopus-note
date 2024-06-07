@@ -1,0 +1,32 @@
+<div class="page-model">
+    <div class="posts">
+        <div class="post" *ngFor="let post of posts">
+            <div class="info-post">
+                <div style="display: flex">
+                    <h1>{{post.title}}</h1>
+                    <p>{{post.date | date: 'short'}}</p>
+                </div>
+                <div>
+                    <p class="delete-post" (click)="deletePost(post.id)">Delete</p>
+                </div>
+            </div>
+            <p class="text-post" [innerHTML]="post.text">
+            </p>
+        </div>
+        <div class="post" *ngFor="let post of posts">
+            <div class="info-post">
+                <div style="display: flex">
+                    <h1>{{post.title}}</h1>
+                    <p>{{post.date | date: 'short'}}</p>
+                </div>
+                <div>
+                    <p class="delete-post" (click)="deletePost(post.id)">Delete</p>
+                </div>
+            </div>
+            <p class="text-post" [innerHTML]="post.text">
+            </p>
+        </div>
+        
+    </div>
+    </div>
+    <img src="assets/back.png" [routerLink]="['', 'admin', 'posts']" class="close">
