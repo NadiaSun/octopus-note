@@ -16,7 +16,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   
   ngOnInit(): void {
     this.pSub = this.post.getAll().subscribe(response => {
-      this.posts = response
+      this.posts = response.reverse()
     })
   }
 

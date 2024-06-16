@@ -20,6 +20,12 @@ export class LogModelComponent implements OnInit{
   submitted = false;
 
   ngOnInit(): void {
+    
+    if(this.auth.statusAuthentication()) {
+      console.log(this.router.url)
+      this.router.navigate(['/admin'])
+    }
+    
     this.form = new FormGroup({
       email: new FormControl(null, [
         Validators.email,

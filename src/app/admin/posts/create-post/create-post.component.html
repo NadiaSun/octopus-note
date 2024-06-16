@@ -6,21 +6,41 @@
                     type="text"
                     formControlName="title"
                     placeholder="Name post"
+                    (change)="saveValue()"
                 >
                 <hr>
             </div>
             <div class="field">
-                <quill-editor formControlName="text" class="quill-octo">
+                <quill-editor formControlName="text" class="quill-octo" (onContentChanged)="onContentChanged()">
                 </quill-editor>
+                <p
+                    class="saved"
+                    *ngIf="savedMessage"
+                >
+                Data saved: 
+                <i>
+                    {{savedMessage | date: 'shortDate'}}
+                    {{savedMessage | date: 'mediumTime'}}
+                </i></p>
             </div>
             <div style="text-align: center;">
+                <div style="display: flex; justify-content: center;">
+                    <button
+                    class="btn"
+                    type="submit"
+                    [disabled]="true"
+                >Save</button>
                 <button
                     class="btn"
                     type="submit"
                     [disabled]="form.invalid"
-                    >Create</button>
+                    >Publish</button>
+                </div>
                 <img src="assets/back.png" [routerLink]="['', 'admin', 'posts']" class="close">
             </div>
         </form>
+    </div>
+    <div [ngClass]="{'popup-message': message}" *ngIf="message">
+        <p>{{message}}</p>
     </div>
 </div>

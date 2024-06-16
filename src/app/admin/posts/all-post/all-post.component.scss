@@ -27,9 +27,16 @@
                 color: #828282;
                 margin-left: 14px;
             }
-            p.delete-post {
-                color: #ff5454;
-                cursor: pointer;
+            div {
+                display: flex;
+                .edit-post {
+                    color: #28a821;
+                    cursor: pointer;
+                }
+                .delete-post {
+                    color: #ff5454;
+                    cursor: pointer;
+                }
             }
         }
         .text-post {

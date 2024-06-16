@@ -70,7 +70,8 @@ export class AuthService {
       localStorage.setItem('fb-auth-token', response.idToken)
       localStorage.setItem('fb-auth-exp', expDate.toString())
     } else {
-      localStorage.clear()
+      localStorage.removeItem('fb-auth-token')
+      localStorage.removeItem('fb-auth-exp')
     }
 
   }
