@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Post } from '../../shared/interfaces';
 import { PostService } from '../../shared/post.service';
+import { Subject, auditTime, debounceTime} from 'rxjs';
 
 @Component({
   selector: 'app-create-post',
@@ -9,8 +10,12 @@ import { PostService } from '../../shared/post.service';
   styleUrls: ['./create-post.component.scss']
 })
 export class CreatePostComponent implements OnInit {
+  private text$: Subject<string> = new Subject<string>()
+
+  message: string = '';
+  savedMessage: string = ''
   constructor(
-    private post: PostService
+    private post: PostService,
   ) {
 
   }
@@ -18,14 +23,36 @@ export class CreatePostComponent implements OnInit {
   form: FormGroup;
 
   ngOnInit(): void {
+
     this.form = new FormGroup({
-      title: new FormControl(null, [
+      title: new FormControl(localStorage.getItem('title') || '', [
         Validators.required
       ]),
-      text: new FormControl(null, [
+      text: new FormControl(localStorage.getItem('text') || '', [
         Validators.required
       ])
     })
+
+    this.text$
+    .pipe(auditTime(10000))
+    .subscribe(() => {
+      this.saveValue()
+    })
+  }
+
+  saveValue() {
+    if(this.form.value.title !== null) {
+      localStorage.setItem('title', this.form.value.title)
+      this.savedMessage = new Date().toString()
+    }
+    if(this.form.value.text !== null) {
+      localStorage.setItem('text', this.form.value.text)
+      this.savedMessage = new Date().toString()
+    }
+  }
+
+  onContentChanged() {
+    this.text$.next('text')
   }
 
   submit() {
@@ -38,9 +65,20 @@ export class CreatePostComponent implements OnInit {
       text: this.form.value.text,
       date: new Date(),
     }
-
-    this.post.add(post).subscribe((response) => {
-      this.form.reset()
-    })
+    if(this.post.checkAuth(post)) {
+      this.post.add(post).subscribe((response) => {
+        console.log(response)
+        this.message = `«${response.title}» published`
+        localStorage.removeItem('title')
+        localStorage.removeItem('text')
+        this.form.reset()
+        setTimeout(() => {
+          this.message = ""
+          this.savedMessage = ""
+        }, 3000)
+      })
+    } else {
+      this.saveValue()
+    }
   }
 }

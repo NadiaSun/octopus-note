@@ -13,6 +13,7 @@ import { AuthGuard } from './shared/auth.guard';
 import { CreatePostComponent } from './posts/create-post/create-post.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AllPostComponent } from './posts/all-post/all-post.component';
+import { EditPostComponent } from './posts/edit-post/edit-post.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AllPostComponent } from './posts/all-post/all-post.component';
     SettingsComponent,
     PostMenuComponent,
     CreatePostComponent,
-    AllPostComponent],
+    AllPostComponent,
+    EditPostComponent],
   imports: [
     CommonModule,
     SharedModule,

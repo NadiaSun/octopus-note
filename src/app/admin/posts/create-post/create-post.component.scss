@@ -11,6 +11,9 @@
         width: auto;
         margin: 20px;
         height: auto;
+        .field {
+            margin: 40px 20px 10px;
+        }
     }
 
     .quill-octo{
@@ -18,4 +21,45 @@
         height: 200px;
         max-width: 800px;
     }
+
+    .btn {
+        max-width: 250px;
+    }
+    .saved {
+        margin: 2px;
+        font-size: 10px;
+        color: grey;
+        font-family: Arial;
+        i {
+            color: white;
+        }
+    }
 }
+
+.popup-message {
+    width: 200px;
+    padding: 10px;
+    border: 2px solid green;
+    color: white;
+    background-color: rgba(30, 189, 30, 0.800);
+    position: absolute;
+    margin-top: 10px;
+    border-radius: 25px;
+    text-align: center;
+    animation-duration: 1s;
+    animation-name: popup;
+
+    p {
+        margin: 10px;
+    }
+}
+
+@keyframes popup {
+    from {
+        margin-top: -80px;
+    }
+  
+    to {
+        margin-top: 10px;
+    }
+  }
