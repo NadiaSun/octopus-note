@@ -5,7 +5,7 @@
             <h1>Octopusic</h1>
             <div class="info-posts">
                 <p>Counter posts: <b>{{posts.length}}</b></p>
-                <p>Date creating acc: <b>**.**.**</b></p>
+                <p>Date creating acc: <b>6/7/24</b></p>
                 <p>Last post: <b>{{getLastDate() | date: 'short'}}</b></p>
             </div>
         </div>
@@ -13,8 +13,13 @@
     <div class="posts">
         <div class="post" *ngFor="let post of posts">
             <div class="info-post">
-                <h1>{{post.title}}</h1>
-                <p>{{post.date | date: 'short'}}</p>
+                <div style="display: flex">
+                    <h1>{{post.title}}</h1>
+                    <p>{{post.date | date: 'short'}}</p>
+                </div>
+                <div>
+                    <p class="delete-post" (click)="deletePost(post.id)">Delete</p>
+                </div>
             </div>
             <p class="text-post" [innerHTML]="post.text">
             </p>

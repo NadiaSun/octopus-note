@@ -1,10 +1,10 @@
 <div class="model">
     <img src="/assets/octopus-2.png" class="octopus">
     <div class="btns">
-        <button class="btn" [routerLinkActive]="['active']" [routerLink]="['profile']">Profile</button>
-        <button class="btn" [routerLinkActive]="['active']" [routerLink]="['posts']">Posts</button>
-        <button class="btn">Unknown</button>
-        <button class="btn">Unknown</button>
+        <button class="btn" [routerLinkActive]="['active']" [routerLink]="['profile']">Posts</button>
+        <button class="btn" [routerLinkActive]="['active']" [routerLink]="['posts', 'create']">Create post</button>
+        <button class="btn" disabled>Drafts</button>
+        <button class="btn" disabled>Setting</button>
         <p class="exit" (click)="logout($event)">logout</p>
     </div>
 </div>

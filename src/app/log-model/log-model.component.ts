@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from '../admin/shared/interfaces';
 import { AuthService } from '../admin/shared/auth.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-log-model',
@@ -13,13 +13,22 @@ export class LogModelComponent implements OnInit{
 
   constructor(
     public auth: AuthService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   form: FormGroup;
   submitted = false;
+  message = ''
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe((params: Params) => {
+      if(params['loginUser']) {
+        this.message = 'Please sign in'
+      } else {
+        this.message = ''
+      }
+    })
     
     if(this.auth.statusAuthentication()) {
       console.log(this.router.url)

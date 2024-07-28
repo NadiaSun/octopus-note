@@ -38,14 +38,20 @@ export class AuthService {
   }
 
 
-  register(user: User) {
-    this.http.post('', user)
+  register(user: User): Observable<any> {
+    return this.http.post<any>(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${environment.apiKey}`, user)
+    .pipe(
+      catchError(this.errors.bind(this))
+    )
   }
   
   private errors(error: HttpErrorResponse): Observable<any> {
     const {message} = error.error.error
 
     switch(message) {
+      case 'EMAIL_EXISTS':
+        this.error$.next('User with this email exists')
+        break
       case 'EMAIL_NOT_FOUND':
         this.error$.next('User with this email not found')
         break

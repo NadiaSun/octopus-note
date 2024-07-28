@@ -1,21 +1,51 @@
+
 <div class="model">
-    <form action="" class="registration">
-        <!-- <div class="field">
-            <input type="text" class="login" name="login" placeholder="Login">
-            <hr>
-        </div> -->
-        <div class="field">
-            <input type="email" class="email" name="email" placeholder="Email">
-            <hr>
-        </div>
-        <div class="field error-f">
-            <input type="text" class="password" name="password" placeholder="Password">
+    <form [formGroup]="form" class="form-login" (ngSubmit)="submit()">
+        <div class="field" [ngClass]="{'error-f': this.form.controls['email'].errors && this.form.controls['email'].touched}">
+            <input
+                type="email"
+                formControlName="email"
+                placeholder="Email"
+            >
             <hr>
         </div>
-        <button class="btn">Register</button>
-        <div class="warning">
-            <p class="error-message">Password is not valid</p>
+        <div class="field" [ngClass]="{'error-f': this.form.controls['password'].errors && this.form.controls['password'].touched}">
+            <input
+                type="password"
+                formControlName="password"
+                placeholder="Password"
+            >
+            <hr>
         </div>
-        <img src="assets/back.png" [routerLink]="['/']" class="close">
+        <div>
+            <button
+                class="btn"
+                type="submit"
+                [disabled]="form.invalid || submitted"
+                >Register</button>
+            <div *ngIf="this.form.touched && this.form.invalid" class="warning">
+                
+                <p class="error-message" *ngIf="this.form.controls['email'].touched">
+                    <i *ngIf="this.form.controls['email'].errors?.['email']">
+                        Email is invalid
+                    </i>
+                    <i *ngIf="this.form.controls['email'].errors?.['required']">
+                        Email is required
+                    </i>
+                </p>
+                <p class="error-message" *ngIf="this.form.controls['password'].touched">
+                    <i *ngIf="this.form.controls['password'].errors?.['minlength']">
+                        Min password length 6
+                    </i>
+                    <i *ngIf="this.form.controls['password'].errors?.['required']">
+                        Password is required
+                    </i>
+                </p>
+            </div>
+            <div *ngIf="auth.error$ | async as error" class="warning">
+                <p class="error-message">{{error}}</p>
+            </div>
+            <img src="assets/back.png" [routerLink]="['/']" class="close">
+        </div>
     </form>
 </div>

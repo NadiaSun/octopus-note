@@ -28,8 +28,17 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   getLastDate(): number {
     return this.posts
-    .map(post => new Date(post.date).getTime())
-    .sort((a: number, b: number) => a > b ? 1 : -1)[this.posts.length - 1]
+    .map(post => new Date(post.date).getTime())[this.posts.length - 1]
+
+    // .sort((a: number, b: number) => a > b ? 1 : -1)[this.posts.length - 1]
   }
 
+  deletePost(key?: string) {
+    if(key) {
+      !this.post.checkAuth() ? null : 
+      this.post.delete(key).subscribe(response => {
+          this.posts = this.posts.filter(post => post.id !== key)
+        })
+    }
+  }
 }

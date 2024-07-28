@@ -29,6 +29,7 @@
                 max-width: 400px;
                 flex-wrap: wrap;
                 justify-content: space-between;
+                
                 p {
                     margin: 4px;
                     font-size: 16px;
@@ -36,6 +37,7 @@
                         font-size: 20px;
                     }
                 }
+                
             }
         }
     }
@@ -53,6 +55,7 @@
         .info-post{
             color: $bdark;
             display: flex;
+            justify-content: space-between;
             h1{
                 font-size: 22px;
             }
@@ -61,10 +64,29 @@
                 color: #828282;
                 margin-left: 14px;
             }
+            div {
+                display: flex;
+                .edit-post {
+                    color: #28a821;
+                    cursor: pointer;
+                }
+                .delete-post {
+                    color: #ff5454;
+                    cursor: pointer;
+                }
+            }
         }
         .text-post {
             font-family: "Inika", serif;
             font-size: 16px;
         }
     }
+}
+
+.close {
+    max-width: 27px;
+    margin-right: none;
+    position: absolute;
+    bottom: 60px;
+    left: 70px;
 }

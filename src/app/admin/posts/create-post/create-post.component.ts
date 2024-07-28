@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Post } from '../../shared/interfaces';
 import { PostService } from '../../shared/post.service';
 import { Subject, auditTime, debounceTime} from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-post',
@@ -16,6 +17,7 @@ export class CreatePostComponent implements OnInit {
   savedMessage: string = ''
   constructor(
     private post: PostService,
+    private router: Router
   ) {
 
   }
@@ -66,12 +68,14 @@ export class CreatePostComponent implements OnInit {
       date: new Date(),
     }
     if(this.post.checkAuth(post)) {
+      console.log(this.post)
       this.post.add(post).subscribe((response) => {
+        this.form.reset()
+        this.router.navigate([''])
         console.log(response)
         this.message = `«${response.title}» published`
         localStorage.removeItem('title')
         localStorage.removeItem('text')
-        this.form.reset()
         setTimeout(() => {
           this.message = ""
           this.savedMessage = ""
