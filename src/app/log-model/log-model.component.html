@@ -1,3 +1,6 @@
+<div class="message" *ngIf="message">
+    <p>{{message}}</p>
+</div>
 <div class="model">
     <form [formGroup]="form" class="form-login" (ngSubmit)="submit()">
         <div class="field" [ngClass]="{'error-f': this.form.controls['email'].errors && this.form.controls['email'].touched}">

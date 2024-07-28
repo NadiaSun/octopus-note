@@ -36,6 +36,9 @@ export class PostService {
     return this.http.get<Post[]>(`${environment.dataBaseUrl}posts.json`)
       .pipe(
         map((response: {[key: string]: any}) => {
+          if (!response) {
+            return []
+          }
           return Object.keys(response).map((key: string)=> ({
             ...response[key],
             id: key,
